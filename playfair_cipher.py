@@ -98,7 +98,6 @@ def PlayfairCipherDecrypto(P, Key):
         for j in range(5):
             if i[0] in Key[j]:
                 if i[1] in Key[j]:
-                    print(i)
                     for g in i:
                         for k in range(5):
                             if g==Key[j][k]:
