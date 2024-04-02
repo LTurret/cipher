@@ -1,4 +1,3 @@
-
 def PlayfairCipherEncrypto(P, Key):
     key = Key
     Key = []
@@ -13,9 +12,9 @@ def PlayfairCipherEncrypto(P, Key):
                 k += 1
             else:
                 for l in range(26):
-                    alpha = chr(l+ord('a'))
-                    if alpha == 'i' or alpha == 'j':
-                        alpha = 'i'
+                    alpha = chr(l + ord("a"))
+                    if alpha == "i" or alpha == "j":
+                        alpha = "i"
                     if alpha not in check:
                         Key[i].append(alpha)
                         check.append(alpha)
@@ -23,13 +22,13 @@ def PlayfairCipherEncrypto(P, Key):
 
     C = ""
     couple = []
-    P = P.replace(' ', '')
+    P = P.replace(" ", "")
     i = 0
-    while(i < len(P)):
-        if i+1 < len(P):
-            if P[i] != P[i+1]:
+    while i < len(P):
+        if i + 1 < len(P):
+            if P[i] != P[i + 1]:
                 couple.append(P[i])
-                couple.append(P[i+1])
+                couple.append(P[i + 1])
                 i += 2
             else:
                 couple.append(P[i])
@@ -39,16 +38,16 @@ def PlayfairCipherEncrypto(P, Key):
             couple.append(P[i])
             i += 1
     if len(couple) % 2 == 1:
-        couple.append('x')
+        couple.append("x")
 
     for i in range(0, len(couple), 2):
         for j in range(5):
             if couple[i] in set(Key[j]):
-                if couple[i+1] in set(Key[j]):  # row
+                if couple[i + 1] in set(Key[j]):  # row
                     for l in range(2):
                         for k in range(5):
-                            if couple[i+l] == Key[j][k]:
-                                C += Key[j][(k+1) % 5]
+                            if couple[i + l] == Key[j][k]:
+                                C += Key[j][(k + 1) % 5]
                                 break
                 else:
                     x = 0
@@ -57,12 +56,12 @@ def PlayfairCipherEncrypto(P, Key):
                             x = k
                             break
                     for l in range(5):  # col
-                        if couple[i+1] in set(Key[l]):
+                        if couple[i + 1] in set(Key[l]):
                             for k in range(5):
-                                if couple[i+1] == Key[l][k]:
+                                if couple[i + 1] == Key[l][k]:
                                     if x == k:
-                                        C += Key[(j+1) % 26][k]
-                                        C += Key[(l+1) % 26][k]
+                                        C += Key[(j + 1) % 26][k]
+                                        C += Key[(l + 1) % 26][k]
                                         break
                                     else:
                                         C += Key[j][k]
